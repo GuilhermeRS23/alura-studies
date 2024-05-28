@@ -1,4 +1,5 @@
 import style from "./List.module.scss";
+import ListItems from "./ListItems";
 
 const List = () => {
     const tarefas = [{
@@ -19,10 +20,11 @@ const List = () => {
             <h2>Estudo do dia</h2>
             <ul>
                 {tarefas.map((item, index) => (
-                    <li key={index} className={style.item}>
-                        <h3>{item.tarefa}</h3>
-                        <span>{item.tempo}</span>
-                    </li>
+                    <ListItems
+                        key={index}
+                        {...item}
+                    // {...item}   Será importado todos os itens do object
+                    />
                 ))}
             </ul>
         </aside>
