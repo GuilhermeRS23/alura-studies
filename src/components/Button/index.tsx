@@ -1,8 +1,13 @@
 import style from "./Button.module.scss";
 
-const Button = ({ children } : {children: React.ReactElement | string }) => {
+interface ButtonProps{
+    children: React.ReactElement | string 
+    type?: "submit" | "reset" | "button" | undefined
+}
+
+const Button = ({ children, type = "button" } : ButtonProps) => {
         return (
-            <button className={style.botao}>
+            <button className={style.botao} type={type}>
                 {children}
             </button>
         )

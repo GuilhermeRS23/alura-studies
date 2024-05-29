@@ -1,19 +1,8 @@
 import style from "./List.module.scss";
 import ListItems from "./ListItems";
+import { ITarefas } from "../../shared/types/ITarefas";
 
-const List = () => {
-    const tarefas = [{
-        tarefa: 'React',
-        tempo: '02:00:00'
-    },
-    {
-        tarefa: 'JavaScript',
-        tempo: '01:00:00'
-    },
-    {
-        tarefa: 'TypeScript',
-        tempo: '01:00:00'
-    }]
+const List = ({ tarefas }: { tarefas: ITarefas[] }) => {
 
     return (
         <aside className={style.listaTarefas}>
