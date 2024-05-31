@@ -2,15 +2,21 @@ import style from "./List.module.scss";
 import ListItems from "./ListItems";
 import { ITarefas } from "../../shared/types/ITarefas";
 
-const List = ({ tarefas }: { tarefas: ITarefas[] }) => {
+interface ListProps {
+    tarefas: ITarefas[]
+    selectedTask: (tarefasSelecionada: ITarefas) => void
+}
+
+const List = ({ tarefas, selectedTask }: ListProps) => {
 
     return (
         <aside className={style.listaTarefas}>
             <h2>Estudo do dia</h2>
             <ul>
-                {tarefas.map((item, index) => (
+                {tarefas.map((item) => (
                     <ListItems
-                        key={index}
+                        selectedTask={selectedTask}
+                        key={item.id}
                         {...item}
                     // {...item}   Será importado todos os itens do object
                     />
