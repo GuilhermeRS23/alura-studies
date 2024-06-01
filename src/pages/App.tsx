@@ -18,6 +18,21 @@ function App() {
     })))
   }
 
+  function finishTask() {
+    if (selecionado) {
+      setTarefas(oldTask => oldTask.map(task => {
+        if (task.id === selecionado.id) {
+          return {
+            ...task,
+            selecionado: false,
+            completado: true
+          }
+        }
+        return task;
+      }))
+    }
+  }
+
   return (
     <div className={style.AppStyle}>
       <Form aoAlterar={setTarefas} />
@@ -27,6 +42,7 @@ function App() {
       />
       <Timer
         selected={selecionado}
+        TaskFinish={finishTask}
       />
     </div>
   );
